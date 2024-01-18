@@ -18,28 +18,28 @@
       "name": "Ana",
       "image": "/src/assets/boxer.png",
       "description": "Analyst function withdrawal United while",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 4
     },
     {
       "name": "Alfred",
       "image": "/src/assets/cowardly.png",
       "description": "Northwest DRAM henry applications South",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 5
     },
     {
       "name": "Violette",
       "image": "/src/assets/boxer.png",
       "description": "embrace Web Southwest perspiciatis though",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 6
     },
     {
       "name": "Kenton",
       "image": "/src/assets/cowardly.png",
       "description": "Bedfordshire Human tempora Managed Electronic Directives Nissan expedite",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 7
     },
     {
@@ -64,17 +64,10 @@
       "id": 10
     },
     {
-      "name": "Dewayne",
-      "image": "/src/assets/dalmation.png",
-      "description": "Security override firewall Southeast apropos Usability orchid barrel",
-      "isFavorite": false,
-      "id": 11
-    },
-    {
       "name": "Art",
       "image": "/src/assets/blue-heeler.png",
       "description": "Global ha Genderflux payment Metal pixel Money",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 12
     },
     {
@@ -88,7 +81,7 @@
       "name": "Lambert",
       "image": "/src/assets/chihuahua.avif",
       "description": "drive reek Marvin compress executive Coordinator Track bluetooth",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 14
     },
     {
@@ -125,6 +118,13 @@
       "description": "Planner maxime invoice ROI granular ouch Franc",
       "isFavorite": true,
       "id": 19
+    },
+    {
+      "name": "sample doggie",
+      "description": "sample description",
+      "image": "/assets/cowardly.png",
+      "isFavorite": false,
+      "id": 20
     }
   ]
 }

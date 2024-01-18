@@ -1,4 +1,13 @@
-import { ReactNode } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
+import { ActiveComponent } from "../types";
+import { useDogs } from "./Dogs";
+
+type TSectionProvider = {
+  favoredStatusOrForm: ActiveComponent;
+  setFavoredStatusOrForm: (buttons: ActiveComponent) => void;
+};
+
+const SectionContext = createContext<TSectionProvider>({} as TSectionProvider);
 
 export const Section = ({
   label,
@@ -8,6 +17,10 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
+  const { allDogs } = useDogs();
+  const [favoredStatusOrForm, setFavoredStatusOrForm] =
+    useState<ActiveComponent>("all-dogs");
+
   return (
     <section id="main-section">
       <div className="container-header">
@@ -15,34 +28,57 @@ export const Section = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${"active"}`}
+            className={`selector ${
+              favoredStatusOrForm === "favored" ? "active" : ""
+            }`}
             onClick={() => {
-              alert("click favorited");
+              favoredStatusOrForm === "favored"
+                ? setFavoredStatusOrForm("all-dogs")
+                : setFavoredStatusOrForm("favored");
             }}
           >
-            favorited ( {0} )
+            favorited ({" "}
+            {allDogs.filter((dog) => dog.isFavorite === true).length} )
           </div>
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${""}`}
+            className={`selector ${
+              favoredStatusOrForm === "unfavored" ? "active" : ""
+            }`}
             onClick={() => {
-              alert("click unfavorited");
+              favoredStatusOrForm === "unfavored"
+                ? setFavoredStatusOrForm("all-dogs")
+                : setFavoredStatusOrForm("unfavored");
             }}
           >
-            unfavorited ( {10} )
+            unfavorited ({" "}
+            {allDogs.filter((dog) => dog.isFavorite === false).length} )
           </div>
+
           <div
-            className={`selector ${""}`}
+            className={`selector ${
+              favoredStatusOrForm === "create-dog-form" ? "active" : ""
+            }`}
             onClick={() => {
-              alert("clicked create dog");
+              favoredStatusOrForm === "create-dog-form"
+                ? setFavoredStatusOrForm("all-dogs")
+                : setFavoredStatusOrForm("create-dog-form");
             }}
           >
             create dog
           </div>
         </div>
       </div>
-      <div className="content-container">{children}</div>
+      <div className="content-container">
+        <SectionContext.Provider
+          value={{ favoredStatusOrForm, setFavoredStatusOrForm }}
+        >
+          {children}
+        </SectionContext.Provider>
+      </div>
     </section>
   );
 };
+
+export const useSection = () => useContext(SectionContext);
