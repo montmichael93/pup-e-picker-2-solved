@@ -4,28 +4,28 @@
       "name": "Jonatan",
       "image": "/src/assets/boxer.png",
       "description": "Shoes after Dollar Marketing female generating Diesel",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 0
     },
     {
       "name": "Anthony",
       "image": "/src/assets/cowardly.png",
       "description": "plum Savings female Ghana programming solutions miniaturise",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 1
     },
     {
       "name": "Ana",
       "image": "/src/assets/boxer.png",
       "description": "Analyst function withdrawal United while",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 4
     },
     {
       "name": "Alfred",
       "image": "/src/assets/cowardly.png",
       "description": "Northwest DRAM henry applications South",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 5
     },
     {
@@ -67,7 +67,7 @@
       "name": "Art",
       "image": "/src/assets/blue-heeler.png",
       "description": "Global ha Genderflux payment Metal pixel Money",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 12
     },
     {
@@ -95,14 +95,14 @@
       "name": "Trudie",
       "image": "/src/assets/boxer.png",
       "description": "connecting blue National Movies Interactions ack Tandem Shirt",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 16
     },
     {
       "name": "Meaghan",
       "image": "/src/assets/dalmation.png",
       "description": "lux Manager North applications Rufiyaa",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 17
     },
     {
@@ -120,11 +120,25 @@
       "id": 19
     },
     {
+      "name": "moe moe kyun",
+      "description": "dog description",
+      "image": "/assets/chihuahua.avif",
+      "isFavorite": true,
+      "id": 21
+    },
+    {
+      "name": "Michael ",
+      "description": "michael dog",
+      "image": "/assets/cowardly.png",
+      "isFavorite": true,
+      "id": 22
+    },
+    {
       "name": "sample doggie",
       "description": "sample description",
-      "image": "/assets/cowardly.png",
-      "isFavorite": false,
-      "id": 20
+      "image": "/assets/boxer.jpeg",
+      "isFavorite": true,
+      "id": 23
     }
   ]
 }

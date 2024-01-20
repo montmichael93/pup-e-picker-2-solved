@@ -1,13 +1,6 @@
-import { ReactNode, createContext, useContext, useState } from "react";
-import { ActiveComponent } from "../types";
-import { useDogs } from "./Dogs";
+import { ReactNode } from "react";
 
-type TSectionProvider = {
-  favoredStatusOrForm: ActiveComponent;
-  setFavoredStatusOrForm: (buttons: ActiveComponent) => void;
-};
-
-const SectionContext = createContext<TSectionProvider>({} as TSectionProvider);
+import { useDogs } from "./Provider";
 
 export const Section = ({
   label,
@@ -17,9 +10,7 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
-  const { allDogs } = useDogs();
-  const [favoredStatusOrForm, setFavoredStatusOrForm] =
-    useState<ActiveComponent>("all-dogs");
+  const { allDogs, favoredStatusOrForm, setFavoredStatusOrForm } = useDogs();
 
   return (
     <section id="main-section">
@@ -70,15 +61,7 @@ export const Section = ({
           </div>
         </div>
       </div>
-      <div className="content-container">
-        <SectionContext.Provider
-          value={{ favoredStatusOrForm, setFavoredStatusOrForm }}
-        >
-          {children}
-        </SectionContext.Provider>
-      </div>
+      <div className="content-container">{children}</div>
     </section>
   );
 };
-
-export const useSection = () => useContext(SectionContext);

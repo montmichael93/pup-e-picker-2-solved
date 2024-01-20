@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { dogPictures } from "../dog-pictures";
-import { useDogs } from "./Dogs";
-import { useSection } from "./Section";
+import { useDogs } from "./Provider";
 
 export const CreateDogForm = () =>
   // no props allowed
   {
-    const { isLoading, postDog } = useDogs();
-    const { favoredStatusOrForm } = useSection();
+    const { postDog, favoredStatusOrForm } = useDogs();
     const wasTheFormSelected = favoredStatusOrForm === "create-dog-form";
     const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler);
     const [nameInput, setNameInput] = useState("");
@@ -41,7 +39,7 @@ export const CreateDogForm = () =>
               onChange={(e) => {
                 setNameInput(e.target.value);
               }}
-              disabled={isLoading}
+              //disabled={isLoading}
             />
             <label htmlFor="description">Dog Description</label>
             <textarea
@@ -52,7 +50,7 @@ export const CreateDogForm = () =>
               onChange={(e) => {
                 setDescriptionInput(e.target.value);
               }}
-              disabled={isLoading}
+              //disabled={isLoading}
             ></textarea>
             <label htmlFor="picture">Select an Image</label>
             <select
@@ -69,7 +67,7 @@ export const CreateDogForm = () =>
                 );
               })}
             </select>
-            <input type="submit" value="submit" disabled={isLoading} />
+            <input type="submit" value="submit" />
           </form>
         )}
       </>
