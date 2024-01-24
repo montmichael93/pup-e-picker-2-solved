@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-
 import { useDogs } from "./Provider";
 
 export const Section = ({
@@ -10,7 +9,12 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
-  const { allDogs, favoredStatusOrForm, setFavoredStatusOrForm } = useDogs();
+  const {
+    favoritedDogs,
+    unfavoritedDogs,
+    activeComponent,
+    setActiveComponent,
+  } = useDogs();
 
   return (
     <section id="main-section">
@@ -20,41 +24,39 @@ export const Section = ({
           {/* This should display the favorited count */}
           <div
             className={`selector ${
-              favoredStatusOrForm === "favored" ? "active" : ""
+              activeComponent === "favored" ? "active" : ""
             }`}
             onClick={() => {
-              favoredStatusOrForm === "favored"
-                ? setFavoredStatusOrForm("all-dogs")
-                : setFavoredStatusOrForm("favored");
+              activeComponent === "favored"
+                ? setActiveComponent("all-dogs")
+                : setActiveComponent("favored");
             }}
           >
-            favorited ({" "}
-            {allDogs.filter((dog) => dog.isFavorite === true).length} )
+            favorited ( {favoritedDogs.length} )
           </div>
 
           {/* This should display the unfavorited count */}
           <div
             className={`selector ${
-              favoredStatusOrForm === "unfavored" ? "active" : ""
+              activeComponent === "unfavored" ? "active" : ""
             }`}
             onClick={() => {
-              favoredStatusOrForm === "unfavored"
-                ? setFavoredStatusOrForm("all-dogs")
-                : setFavoredStatusOrForm("unfavored");
+              activeComponent === "unfavored"
+                ? setActiveComponent("all-dogs")
+                : setActiveComponent("unfavored");
             }}
           >
-            unfavorited ({" "}
-            {allDogs.filter((dog) => dog.isFavorite === false).length} )
+            unfavorited ( {unfavoritedDogs.length} )
           </div>
 
           <div
             className={`selector ${
-              favoredStatusOrForm === "create-dog-form" ? "active" : ""
+              activeComponent === "create-dog-form" ? "active" : ""
             }`}
             onClick={() => {
-              favoredStatusOrForm === "create-dog-form"
-                ? setFavoredStatusOrForm("all-dogs")
-                : setFavoredStatusOrForm("create-dog-form");
+              activeComponent === "create-dog-form"
+                ? setActiveComponent("all-dogs")
+                : setActiveComponent("create-dog-form");
             }}
           >
             create dog

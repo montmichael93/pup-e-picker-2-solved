@@ -12,11 +12,13 @@ import { Requests } from "../api";
 import toast from "react-hot-toast";
 
 type TDogProvider = {
-  allDogs: Dog[];
-  setAllDogs: Dispatch<SetStateAction<Dog[]>>;
+  favoritedDogs: Dog[];
+  unfavoritedDogs: Dog[];
   isLoading: boolean;
-  favoredStatusOrForm: ActiveComponent;
-  setFavoredStatusOrForm: Dispatch<SetStateAction<ActiveComponent>>;
+  activeComponent: ActiveComponent;
+  filteredDogs: Dog[];
+  setAllDogs: Dispatch<SetStateAction<Dog[]>>;
+  setActiveComponent: Dispatch<SetStateAction<ActiveComponent>>;
   postDog: (dog: Omit<Dog, "id">) => void;
   deleteDogRequest: (dogId: number) => void;
   patchFavoriteForDog: (dogIdNumber: number, favoriteStatus: boolean) => void;
@@ -25,9 +27,9 @@ type TDogProvider = {
 const DogsContext = createContext<TDogProvider>({} as TDogProvider);
 
 export const DogProvider = ({ children }: { children: ReactNode }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
-  const [isLoading] = useState(false);
-  const [favoredStatusOrForm, setFavoredStatusOrForm] =
+  const [activeComponent, setActiveComponent] =
     useState<ActiveComponent>("all-dogs");
 
   useEffect(() => {
@@ -35,30 +37,30 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
     Requests.getAllDogs()
       .then(setAllDogs)
       .catch((error) => {
-        alert(error);
+        console.log(error);
       });
   }, []);
 
   const postDog = (dog: Omit<Dog, "id">) => {
+    setIsLoading(true);
     const maxId = allDogs.map((dogs) => dogs.id).slice(-1)[0];
     const newDog: Dog = {
       id: maxId + 1,
       ...dog,
     };
     const addTheNewDog = [...allDogs, newDog];
-    setAllDogs(addTheNewDog);
+    setIsLoading(true);
     Requests.postDog(dog)
-      .then((response) => {
-        if (!response) {
-          setAllDogs(allDogs);
-        } else return;
+      .then(() => {
+        setAllDogs(addTheNewDog);
+      })
+      .catch((error) => {
+        alert(error);
       })
       .then(() => {
         toast.success("Dog Created!");
       })
-      .catch((error) => {
-        alert(error);
-      });
+      .finally(() => setIsLoading(false));
   };
 
   const deleteDogRequest = (dogId: number) => {
@@ -70,7 +72,7 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
         } else return;
       })
       .catch((error) => {
-        alert(error);
+        console.log(error);
       });
   };
 
@@ -90,18 +92,35 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
         } else return;
       })
       .catch((error) => {
-        alert(error);
+        console.log(error);
       });
   };
+
+  const favoritedDogs = allDogs.filter((dog) => dog.isFavorite);
+  const unfavoritedDogs = allDogs.filter((dog) => !dog.isFavorite);
+  const filteredDogs = ((): Dog[] => {
+    switch (activeComponent) {
+      case "all-dogs":
+        return allDogs;
+      case "create-dog-form":
+        return [];
+      case "favored":
+        return favoritedDogs;
+      case "unfavored":
+        return unfavoritedDogs;
+    }
+  })();
 
   return (
     <DogsContext.Provider
       value={{
-        allDogs,
-        setAllDogs,
+        favoritedDogs,
+        unfavoritedDogs,
         isLoading,
-        favoredStatusOrForm,
-        setFavoredStatusOrForm,
+        activeComponent,
+        filteredDogs,
+        setAllDogs,
+        setActiveComponent,
         postDog,
         deleteDogRequest,
         patchFavoriteForDog,

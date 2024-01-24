@@ -4,21 +4,21 @@
       "name": "Jonatan",
       "image": "/src/assets/boxer.png",
       "description": "Shoes after Dollar Marketing female generating Diesel",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 0
     },
     {
       "name": "Anthony",
       "image": "/src/assets/cowardly.png",
       "description": "plum Savings female Ghana programming solutions miniaturise",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 1
     },
     {
       "name": "Ana",
       "image": "/src/assets/boxer.png",
       "description": "Analyst function withdrawal United while",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 4
     },
     {
@@ -32,7 +32,7 @@
       "name": "Violette",
       "image": "/src/assets/boxer.png",
       "description": "embrace Web Southwest perspiciatis though",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 6
     },
     {
@@ -46,7 +46,7 @@
       "name": "Asa",
       "image": "/src/assets/dalmation.png",
       "description": "Minivan Neither Road Movies radian",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 8
     },
     {
@@ -67,78 +67,99 @@
       "name": "Art",
       "image": "/src/assets/blue-heeler.png",
       "description": "Global ha Genderflux payment Metal pixel Money",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 12
     },
     {
       "name": "Sebastian",
       "image": "/src/assets/boxer.png",
       "description": "Associate Gasoline Savings Hybrid Developer",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 13
     },
     {
       "name": "Lambert",
       "image": "/src/assets/chihuahua.avif",
       "description": "drive reek Marvin compress executive Coordinator Track bluetooth",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 14
     },
     {
       "name": "Kris",
       "image": "/src/assets/blue-heeler.png",
       "description": "Beryllium Chevrolet partnerships focus Southeast Poland salmon",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 15
     },
     {
       "name": "Trudie",
       "image": "/src/assets/boxer.png",
       "description": "connecting blue National Movies Interactions ack Tandem Shirt",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 16
     },
     {
       "name": "Meaghan",
       "image": "/src/assets/dalmation.png",
       "description": "lux Manager North applications Rufiyaa",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 17
     },
     {
       "name": "Vallie",
       "image": "/src/assets/chihuahua.avif",
       "description": "Lead synergistic noisy operating Passenger female Salad Rubber",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 18
     },
     {
       "name": "Newton",
       "image": "/src/assets/blue-heeler.png",
       "description": "Planner maxime invoice ROI granular ouch Franc",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 19
     },
     {
       "name": "moe moe kyun",
       "description": "dog description",
       "image": "/assets/chihuahua.avif",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 21
     },
     {
       "name": "Michael ",
       "description": "michael dog",
       "image": "/assets/cowardly.png",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 22
     },
     {
       "name": "sample doggie",
       "description": "sample description",
       "image": "/assets/boxer.jpeg",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 23
+    },
+    {
+      "name": "moe moe kyun",
+      "description": "lknlknlkn",
+      "image": "/assets/boxer.jpeg",
+      "isFavorite": false,
+      "id": 24
+    },
+    {
+      "name": "kjnblkn",
+      "description": "linklkml",
+      "image": "/assets/cowardly.png",
+      "isFavorite": false,
+      "id": 25
+    },
+    {
+      "name": ",jnblkjn",
+      "description": ";LNM;M",
+      "image": "/assets/cowardly.png",
+      "isFavorite": false,
+      "id": 26
     }
   ]
 }

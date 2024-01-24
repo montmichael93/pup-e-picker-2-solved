@@ -15,8 +15,9 @@ const postDog = (dog: Omit<Dog, "id">) => {
     headers: {
       "Content-Type": "application/json",
     },
-  });
+  }).then((response) => response.json());
 };
+
 const deleteDogRequest = (dogId: number) => {
   // fill out method
   return fetch(`${baseUrl}/dogs/${dogId}`, {
