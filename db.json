@@ -139,27 +139,6 @@
       "image": "/assets/boxer.jpeg",
       "isFavorite": false,
       "id": 23
-    },
-    {
-      "name": "moe moe kyun",
-      "description": "lknlknlkn",
-      "image": "/assets/boxer.jpeg",
-      "isFavorite": false,
-      "id": 24
-    },
-    {
-      "name": "kjnblkn",
-      "description": "linklkml",
-      "image": "/assets/cowardly.png",
-      "isFavorite": false,
-      "id": 25
-    },
-    {
-      "name": ",jnblkjn",
-      "description": ";LNM;M",
-      "image": "/assets/cowardly.png",
-      "isFavorite": false,
-      "id": 26
     }
   ]
 }

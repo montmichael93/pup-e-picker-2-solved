@@ -19,7 +19,7 @@ type TDogProvider = {
   filteredDogs: Dog[];
   setAllDogs: Dispatch<SetStateAction<Dog[]>>;
   setActiveComponent: Dispatch<SetStateAction<ActiveComponent>>;
-  postDog: (dog: Omit<Dog, "id">) => void;
+  postDog: (dog: Omit<Dog, "id">) => Promise<void>;
   deleteDogRequest: (dogId: number) => void;
   patchFavoriteForDog: (dogIdNumber: number, favoriteStatus: boolean) => void;
 };
@@ -27,7 +27,7 @@ type TDogProvider = {
 const DogsContext = createContext<TDogProvider>({} as TDogProvider);
 
 export const DogProvider = ({ children }: { children: ReactNode }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
   const [activeComponent, setActiveComponent] =
     useState<ActiveComponent>("all-dogs");
@@ -41,16 +41,14 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
       });
   }, []);
 
-  const postDog = (dog: Omit<Dog, "id">) => {
-    setIsLoading(true);
+  const postDog = async (dog: Omit<Dog, "id">) => {
     const maxId = allDogs.map((dogs) => dogs.id).slice(-1)[0];
     const newDog: Dog = {
       id: maxId + 1,
       ...dog,
     };
     const addTheNewDog = [...allDogs, newDog];
-    setIsLoading(true);
-    Requests.postDog(dog)
+    await Requests.postDog(dog)
       .then(() => {
         setAllDogs(addTheNewDog);
       })
@@ -59,8 +57,7 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
       })
       .then(() => {
         toast.success("Dog Created!");
-      })
-      .finally(() => setIsLoading(false));
+      });
   };
 
   const deleteDogRequest = (dogId: number) => {

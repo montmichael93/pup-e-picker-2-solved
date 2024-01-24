@@ -5,7 +5,7 @@ import { useDogs } from "./Provider";
 export const CreateDogForm = () =>
   // no props allowed
   {
-    const { activeComponent, isLoading, postDog } = useDogs();
+    const { activeComponent, postDog } = useDogs();
     const wasTheFormSelected = activeComponent === "create-dog-form";
     const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler);
     const [nameInput, setNameInput] = useState("");
@@ -24,12 +24,15 @@ export const CreateDogForm = () =>
                 image:
                   selectedImage === "" ? dogPictures.BlueHeeler : selectedImage,
                 isFavorite: false,
-              });
-              if (!isLoading) {
-                setNameInput("");
-                setDescriptionInput("");
-                setSelectedImage("");
-              }
+              })
+                .then(() => {
+                  setNameInput("");
+                  setDescriptionInput("");
+                  setSelectedImage("");
+                })
+                .catch((e) => {
+                  console.log(e);
+                });
             }}
           >
             <h4>Create a New Dog</h4>
